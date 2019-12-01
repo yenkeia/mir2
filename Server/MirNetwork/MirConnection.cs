@@ -2,12 +2,14 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using System.Linq;
 using Server.MirDatabase;
 using Server.MirEnvir;
 using Server.MirObjects;
 using C = ClientPackets;
 using S = ServerPackets;
 using System.Linq;
+using System.Text;
 
 namespace Server.MirNetwork
 {
@@ -152,7 +154,7 @@ namespace Server.MirNetwork
  
                 MessageQueue.Enqueue("<---收到客户端包Index: " + p.Index);
                 MessageQueue.Enqueue("<---收到客户端包信息: " + p.ToString());
-                MessageQueue.Enqueue("<---收到客户端包字节信息: " + p.GetPacketBytes());
+                MessageQueue.Enqueue("<---收到客户端包字节信息: " + StringByteArray((byte[])p.GetPacketBytes()));
 
                 _receiveList.Enqueue(p);
             }
@@ -191,6 +193,16 @@ namespace Server.MirNetwork
                 _sendList.Enqueue(p);
         }
         
+        public string StringByteArray(byte[] bytes)
+        {
+            var sb = new StringBuilder();
+            foreach (var b in bytes)
+            {
+                sb.Append(b + ", ");
+            }
+            return sb.ToString();
+        }
+
         public void Process()
         {
             if (_client == null || !_client.Connected)
@@ -228,7 +240,7 @@ namespace Server.MirNetwork
                 if (!_sendList.TryDequeue(out p) || p == null) continue;
                 MessageQueue.Enqueue("--->发送服务端包Index: " + p.Index);
                 MessageQueue.Enqueue("--->发送服务端包信息: " + p.ToString());
-                MessageQueue.Enqueue("--->发送服务端包字节信息: " + p.GetPacketBytes());
+                MessageQueue.Enqueue("--->发送服务端包字节信息: " + StringByteArray((byte[])p.GetPacketBytes()));
                 data.AddRange(p.GetPacketBytes());
             }
 
