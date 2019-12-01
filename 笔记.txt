@@ -1,3 +1,5 @@
+客户端依赖 References 把 Microsoft.DirectX 开头的全删掉,  换成 Components 里面的
+
 [2019/12/1 13:54:24]: Network Started.
 [2019/12/1 13:54:27]: 127.0.0.1, Connected.
 [2019/12/1 13:54:27]: --->发送服务端包Index: 0
