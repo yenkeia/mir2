@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server.MirForms\Server.csproj", "{263074D6-AB8D-4F3C-9CE6-A05405432BCE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{35050645-A39D-483B-BB24-3EFCC5F7E720} = {35050645-A39D-483B-BB24-3EFCC5F7E720}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{35050645-A39D-483B-BB24-3EFCC5F7E720}"
 EndProject
@@ -40,6 +43,7 @@ Global
 		{263074D6-AB8D-4F3C-9CE6-A05405432BCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{263074D6-AB8D-4F3C-9CE6-A05405432BCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{263074D6-AB8D-4F3C-9CE6-A05405432BCE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{263074D6-AB8D-4F3C-9CE6-A05405432BCE}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{263074D6-AB8D-4F3C-9CE6-A05405432BCE}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{263074D6-AB8D-4F3C-9CE6-A05405432BCE}.Debug|x64.Build.0 = Debug|Any CPU
 		{263074D6-AB8D-4F3C-9CE6-A05405432BCE}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -105,6 +109,7 @@ Global
 		{AF5F4517-CE06-4D20-9BFF-1860C6604021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AF5F4517-CE06-4D20-9BFF-1860C6604021}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF5F4517-CE06-4D20-9BFF-1860C6604021}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{AF5F4517-CE06-4D20-9BFF-1860C6604021}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{AF5F4517-CE06-4D20-9BFF-1860C6604021}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{AF5F4517-CE06-4D20-9BFF-1860C6604021}.Debug|x64.Build.0 = Debug|Any CPU
 		{AF5F4517-CE06-4D20-9BFF-1860C6604021}.Debug|x86.ActiveCfg = Debug|Any CPU

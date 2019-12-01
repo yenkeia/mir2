@@ -140,12 +140,22 @@ namespace Server.MirNetwork
 
             byte[] temp = _rawData;
             _rawData = new byte[dataRead + temp.Length];
+
+            MessageQueue.Enqueue("收到字节长度: " + _rawData.Length);
+
             Buffer.BlockCopy(temp, 0, _rawData, 0, temp.Length);
             Buffer.BlockCopy(rawBytes, 0, _rawData, temp.Length, dataRead);
 
             Packet p;
             while ((p = Packet.ReceivePacket(_rawData, out _rawData)) != null)
+            {
+ 
+                MessageQueue.Enqueue("包Index: " + p.Index);
+                MessageQueue.Enqueue("包信息: " + p.ToString());
+
                 _receiveList.Enqueue(p);
+            }
+
 
             BeginReceive();
         }

@@ -64,7 +64,7 @@ namespace Client
         public static int RemainingErrorLogs = 100;
 
         //Graphics
-        public static bool FullScreen = true, TopMost = true;
+        public static bool FullScreen = false, TopMost = true;
         public static string FontName = "Tahoma"; //"MS Sans Serif"
         public static bool FPSCap = true;
         public static int MaxFPS = 100;
@@ -78,8 +78,8 @@ namespace Client
         public const int TimeOut = 5000;
 
         //Sound
-        public static int SoundOverLap = 3;
-        private static byte _volume = 100;
+        public static int SoundOverLap = 1;
+        private static byte _volume = 10;
         public static byte Volume
         {
             get { return _volume; }
@@ -96,7 +96,7 @@ namespace Client
             }
         }
 
-        private static byte _musicVolume = 100;
+        private static byte _musicVolume = 10;
         public static byte MusicVolume
         {
             get { return _musicVolume; }
@@ -160,8 +160,9 @@ namespace Client
 
 
         //AutoPatcher
-        public static bool P_Patcher = true;
-        public static string P_Host = @"http://mirfiles.co.uk/mir2/cmir/patch/"; //ftp://212.67.209.184
+        public static bool P_Patcher = false;
+        //public static string P_Host = @"http://mirfiles.co.uk/mir2/cmir/patch/"; //ftp://212.67.209.184
+        public static string P_Host = ""; //ftp://212.67.209.184
         public static string P_PatchFileName = @"PList.gz";
         public static bool P_NeedLogin = false;
         public static string P_Login = string.Empty;

@@ -45,7 +45,7 @@ namespace Server
         public static bool Multithreaded = true;
         public static int ThreadLimit = 2;
         public static bool TestServer = false;
-        public static bool EnforceDBChecks = true;
+        public static bool EnforceDBChecks = false;
 
         public static string DefaultNPCFilename = "00Default";
         public static string FishingDropFilename = "00Fishing";
