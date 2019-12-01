@@ -141,7 +141,7 @@ namespace Server.MirNetwork
             byte[] temp = _rawData;
             _rawData = new byte[dataRead + temp.Length];
 
-            MessageQueue.Enqueue("收到字节长度: " + _rawData.Length);
+            MessageQueue.Enqueue("<---收到字节长度: " + _rawData.Length);
 
             Buffer.BlockCopy(temp, 0, _rawData, 0, temp.Length);
             Buffer.BlockCopy(rawBytes, 0, _rawData, temp.Length, dataRead);
@@ -150,8 +150,9 @@ namespace Server.MirNetwork
             while ((p = Packet.ReceivePacket(_rawData, out _rawData)) != null)
             {
  
-                MessageQueue.Enqueue("包Index: " + p.Index);
-                MessageQueue.Enqueue("包信息: " + p.ToString());
+                MessageQueue.Enqueue("<---收到客户端包Index: " + p.Index);
+                MessageQueue.Enqueue("<---收到客户端包信息: " + p.ToString());
+                MessageQueue.Enqueue("<---收到客户端包字节信息: " + p.GetPacketBytes());
 
                 _receiveList.Enqueue(p);
             }
@@ -225,6 +226,9 @@ namespace Server.MirNetwork
             {
                 Packet p;
                 if (!_sendList.TryDequeue(out p) || p == null) continue;
+                MessageQueue.Enqueue("--->发送服务端包Index: " + p.Index);
+                MessageQueue.Enqueue("--->发送服务端包信息: " + p.ToString());
+                MessageQueue.Enqueue("--->发送服务端包字节信息: " + p.GetPacketBytes());
                 data.AddRange(p.GetPacketBytes());
             }
 
