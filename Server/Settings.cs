@@ -39,7 +39,7 @@ namespace Server
 
         //General
         public static string VersionPath = Path.Combine(".", "Mir2.Exe");
-        public static bool CheckVersion = true;
+        public static bool CheckVersion = false;
         public static byte[] VersionHash;
         public static string GMPassword = "C#Mir 4.0";
         public static bool Multithreaded = true;
@@ -75,7 +75,7 @@ namespace Server
                            AllowLogin = true,
                            AllowNewCharacter = true,
                            AllowDeleteCharacter = true,
-                           AllowStartGame = false,
+                           AllowStartGame = true,
                            AllowCreateAssassin = true,
                            AllowCreateArcher = true;
 
