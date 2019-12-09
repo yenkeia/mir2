@@ -3089,41 +3089,41 @@ public class UserItem
         PoisonAttack = reader.ReadByte();
         
 
-        if (version <= 31) return;
+        //if (version <= 31) return;
 
-        int count = reader.ReadInt32();
-        for (int i = 0; i < count; i++)
-        {
-            if (reader.ReadBoolean()) continue;
-            UserItem item = new UserItem(reader, version, Customversion);
-            Slots[i] = item;
-        }
+        //int count = reader.ReadInt32();
+        //for (int i = 0; i < count; i++)
+        //{
+        //    if (reader.ReadBoolean()) continue;
+        //    UserItem item = new UserItem(reader, version, Customversion);
+        //    Slots[i] = item;
+        //}
 
-        if (version <= 38) return;
+        //if (version <= 38) return;
 
-        GemCount = reader.ReadUInt32();
+        //GemCount = reader.ReadUInt32();
 
-        if (version <= 40) return;
+        //if (version <= 40) return;
 
-        Awake = new Awake(reader);
+        //Awake = new Awake(reader);
 
-        if (version <= 56) return;
+        //if (version <= 56) return;
 
-        RefinedValue = (RefinedValue)reader.ReadByte();
-        RefineAdded = reader.ReadByte();
-        if (version < 60) return;
-        WeddingRing = reader.ReadInt32();
+        //RefinedValue = (RefinedValue)reader.ReadByte();
+        //RefineAdded = reader.ReadByte();
+        //if (version < 60) return;
+        //WeddingRing = reader.ReadInt32();
 
-        if (version < 65) return;
+        //if (version < 65) return;
 
-        if (reader.ReadBoolean())
-            ExpireInfo = new ExpireInfo(reader, version, Customversion);
+        //if (reader.ReadBoolean())
+        //    ExpireInfo = new ExpireInfo(reader, version, Customversion);
 
-        if (version < 76)
-            return;
+        //if (version < 76)
+        //    return;
 
-        if (reader.ReadBoolean())
-            RentalInformation = new RentalInformation(reader, version, Customversion);
+        //if (reader.ReadBoolean())
+        //    RentalInformation = new RentalInformation(reader, version, Customversion);
     }
 
     public void Save(BinaryWriter writer)
@@ -3165,30 +3165,30 @@ public class UserItem
         writer.Write(Freezing);
         writer.Write(PoisonAttack);
 
-        writer.Write(Slots.Length);
-        for (int i = 0; i < Slots.Length; i++)
-        {
-            writer.Write(Slots[i] == null);
-            if (Slots[i] == null) continue;
+        //writer.Write(Slots.Length);
+        //for (int i = 0; i < Slots.Length; i++)
+        //{
+        //    writer.Write(Slots[i] == null);
+        //    if (Slots[i] == null) continue;
 
-            Slots[i].Save(writer);
-        }
+        //    Slots[i].Save(writer);
+        //}
 
-        writer.Write(GemCount);
+        //writer.Write(GemCount);
 
        
-        Awake.Save(writer);
+        //Awake.Save(writer);
 
-        writer.Write((byte)RefinedValue);
-        writer.Write(RefineAdded);
+        //writer.Write((byte)RefinedValue);
+        //writer.Write(RefineAdded);
 
-        writer.Write(WeddingRing);
+        //writer.Write(WeddingRing);
 
-        writer.Write(ExpireInfo != null);
-        ExpireInfo?.Save(writer);
+        //writer.Write(ExpireInfo != null);
+        //ExpireInfo?.Save(writer);
 
-        writer.Write(RentalInformation != null);
-        RentalInformation?.Save(writer);
+        //writer.Write(RentalInformation != null);
+        //RentalInformation?.Save(writer);
     }
 
 
