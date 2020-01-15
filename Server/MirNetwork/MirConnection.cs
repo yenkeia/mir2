@@ -161,6 +161,7 @@ namespace Server.MirNetwork
                     p.Index == 11 || 
                     p.Index == 12
                 ) {
+                    _receiveList.Enqueue(p);
                     continue;
                 }
  
@@ -264,6 +265,7 @@ namespace Server.MirNetwork
                     p.Index == 210 ||
                     p.Index == 172
                 ) {
+                    data.AddRange(p.GetPacketBytes());
                     continue;
                 }
                 MessageQueue.Enqueue("--->发送服务端包Index: " + p.Index);
