@@ -263,7 +263,9 @@ namespace Server.MirNetwork
                     p.Index == 23 || 
                     p.Index == 24 || 
                     p.Index == 210 ||
-                    p.Index == 172
+                    p.Index == 172 ||
+                    p.Index == 24 || // NewItemInfo
+                    p.Index == 220   // GameShopInfo
                 ) {
                     data.AddRange(p.GetPacketBytes());
                     continue;
