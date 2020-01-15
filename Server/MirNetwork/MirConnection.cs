@@ -151,6 +151,18 @@ namespace Server.MirNetwork
             Packet p;
             while ((p = Packet.ReceivePacket(_rawData, out _rawData)) != null)
             {
+                // 2 KeepAlive
+                // 10 Turn
+                // 11 Walk
+                // 12 Run
+                if (
+                    p.Index == 2 || 
+                    p.Index == 10 || 
+                    p.Index == 11 || 
+                    p.Index == 12
+                ) {
+                    continue;
+                }
  
                 MessageQueue.Enqueue("<---收到客户端包Index: " + p.Index);
                 MessageQueue.Enqueue("<---收到客户端包信息: " + p.ToString());
@@ -238,6 +250,22 @@ namespace Server.MirNetwork
             {
                 Packet p;
                 if (!_sendList.TryDequeue(out p) || p == null) continue;
+                // 3 KeepAlive
+                // 22 ObjectTurn
+                // 23 ObjectWalk
+                // 24 ObjectRun
+                // 210 UpdateIntelligentCreatureList
+                // 172 NewQuestInfo
+                if (
+                    p.Index == 3 ||
+                    p.Index == 22 || 
+                    p.Index == 23 || 
+                    p.Index == 24 || 
+                    p.Index == 210 ||
+                    p.Index == 172
+                ) {
+                    continue;
+                }
                 MessageQueue.Enqueue("--->发送服务端包Index: " + p.Index);
                 MessageQueue.Enqueue("--->发送服务端包信息: " + p.ToString());
                 MessageQueue.Enqueue("--->发送服务端包字节信息: " + StringByteArray((byte[])p.GetPacketBytes()));
