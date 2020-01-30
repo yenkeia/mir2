@@ -537,13 +537,13 @@ namespace ServerPackets
             Gold = reader.ReadUInt32();
             Credit = reader.ReadUInt32();
 
-            //HasExpandedStorage = reader.ReadBoolean();
-            //ExpandedStorageExpiryTime = DateTime.FromBinary(reader.ReadInt64());
+            HasExpandedStorage = reader.ReadBoolean();
+            ExpandedStorageExpiryTime = DateTime.FromBinary(reader.ReadInt64());
 
-            //int count = reader.ReadInt32();
+            int count = reader.ReadInt32();
 
-            //for (int i = 0; i < count; i++)
-            //    Magics.Add(new ClientMagic(reader));
+            for (int i = 0; i < count; i++)
+                Magics.Add(new ClientMagic(reader));
 
             ////IntelligentCreature
             //count = reader.ReadInt32();
@@ -619,12 +619,12 @@ namespace ServerPackets
             writer.Write(Gold);
             writer.Write(Credit);
 
-            //writer.Write(HasExpandedStorage);
-            //writer.Write(ExpandedStorageExpiryTime.ToBinary());
+            writer.Write(HasExpandedStorage);
+            writer.Write(ExpandedStorageExpiryTime.ToBinary());
 
-            //writer.Write(Magics.Count);
-            //for (int i = 0; i < Magics.Count; i++)
-            //    Magics[i].Save(writer);
+            writer.Write(Magics.Count);
+            for (int i = 0; i < Magics.Count; i++)
+                Magics[i].Save(writer);
 
             ////IntelligentCreature
             //writer.Write(IntelligentCreatures.Count);
